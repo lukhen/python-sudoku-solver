@@ -16,3 +16,18 @@ def test_empty_board():
                 B, B, B, B, B, B, B, B, B]
     # fmt: on
     assert is_valid(empty_bd) is True
+
+
+def test_almost_empty_board():
+    # fmt: off
+    empty_bd = [7, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B,
+                B, B, B, B, B, B, B, B, B]
+    # fmt: on
+    assert is_valid(empty_bd) is True
