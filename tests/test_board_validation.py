@@ -61,3 +61,18 @@ def test_mostly_empty_but_invalid_first_row():
           B, B, B, B, B, B, B, B, B]
     # fmt: on
     assert is_valid(bd) is False
+
+
+def test_invalid_first_row_2():
+    # fmt: off
+    bd = [7, B, B, B, B, B, B, B, 7,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B]
+    # fmt: on
+    assert is_valid(bd) is False

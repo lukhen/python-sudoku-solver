@@ -18,6 +18,8 @@ def is_valid(bd: "Board") -> bool:
         return False
     elif bd[0] == bd[1]:
         return False
+    elif bd[0] == bd[8]:
+        return False
     else:
         return True
 
