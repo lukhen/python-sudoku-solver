@@ -7,7 +7,12 @@
 
 
 def is_valid(bd: "Board") -> bool:
+    if not any(bd):
+        return True
+
     if bd[0] == 1:
+        return False
+    elif bd[0] == bd[1]:
         return False
     else:
         return True

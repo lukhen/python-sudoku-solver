@@ -46,3 +46,18 @@ def test_properly_solved_board():
                  9, 2, 4, 1, 8, 7, 3, 6, 5]
     # fmt: on
     assert is_valid(bd_solved) is True
+
+
+def test_mostly_empty_but_invalid_first_row():
+    # fmt: off
+    bd = [7, 7, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B]
+    # fmt: on
+    assert is_valid(bd) is False
