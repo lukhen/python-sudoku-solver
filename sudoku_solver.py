@@ -6,8 +6,12 @@
 # Value: Integer[0, 9]
 
 
+def is_empty(bd: "Board") -> bool:
+    return not any(bd)
+
+
 def is_valid(bd: "Board") -> bool:
-    if not any(bd):
+    if is_empty(bd):
         return True
 
     if bd[0] == 1:
