@@ -35,10 +35,6 @@ def is_valid(bd: "Board") -> bool:
     x = [has_duplicates(row) for row in all_rows]
     if any([has_duplicates(row) for row in all_rows]):
         return False
-    elif any([has_duplicates(row) for row in all_rows]):
-        return False
-    elif any([has_duplicates(row) for row in all_rows]):
-        return False
     else:
         return True
 
