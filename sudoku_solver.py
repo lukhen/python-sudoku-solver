@@ -23,8 +23,8 @@ def is_empty(bd: "Board") -> bool:
 
 
 def has_duplicates(row):
-    first_row_without_blanks = [sq for sq in row if sq is not None]
-    return len(first_row_without_blanks) != len(set(first_row_without_blanks))
+    row_without_blanks = [sq for sq in row if sq is not None]
+    return len(row_without_blanks) != len(set(row_without_blanks))
 
 
 def is_valid(bd: "Board") -> bool:
