@@ -32,11 +32,12 @@ def is_valid(bd: "Board") -> bool:
         return True
 
     all_rows = [[bd[i] for i in row] for row in ROW_INDICES]
-    if has_duplicates(all_rows[0]):
+    x = [has_duplicates(row) for row in all_rows]
+    if any([has_duplicates(row) for row in all_rows]):
         return False
-    elif has_duplicates(all_rows[1]):
+    elif any([has_duplicates(row) for row in all_rows]):
         return False
-    elif has_duplicates(all_rows[2]):
+    elif any([has_duplicates(row) for row in all_rows]):
         return False
     else:
         return True
