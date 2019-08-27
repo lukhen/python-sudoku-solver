@@ -31,14 +31,12 @@ def is_valid(bd: "Board") -> bool:
     if is_empty(bd):
         return True
 
-    first_row = [bd[i] for i in ROW_INDICES[0]]
-    second_row = [bd[i] for i in ROW_INDICES[1]]
-    third_row = [bd[i] for i in ROW_INDICES[2]]
-    if has_duplicates(first_row):
+    all_rows = [[bd[i] for i in row] for row in ROW_INDICES]
+    if has_duplicates(all_rows[0]):
         return False
-    elif has_duplicates(second_row):
+    elif has_duplicates(all_rows[1]):
         return False
-    elif has_duplicates(third_row):
+    elif has_duplicates(all_rows[2]):
         return False
     else:
         return True
