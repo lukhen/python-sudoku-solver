@@ -18,10 +18,6 @@ def is_valid(bd: "Board") -> bool:
     first_row_without_blanks = [sq for sq in first_row if sq is not None]
     if len(first_row_without_blanks) != len(set(first_row_without_blanks)):
         return False
-    elif len(first_row_without_blanks) != len(set(first_row_without_blanks)):
-        return False
-    elif len(first_row_without_blanks) != len(set(first_row_without_blanks)):
-        return False
     else:
         return True
 
