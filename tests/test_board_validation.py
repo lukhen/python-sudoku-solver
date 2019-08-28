@@ -127,7 +127,7 @@ def test_invalid_last_row():
     # fmt: off
     bd = [B, B, B, B, B, B, B, B, B,
           B, B, B, B, B, B, B, B, B,
-          B, B, 5, B, B, 5, B, B, B,
+          B, B, B, B, B, B, B, B, B,
           B, B, B, B, B, B, B, B, B,
           B, B, B, B, B, B, B, B, B,
           B, B, B, B, B, B, B, B, B,
