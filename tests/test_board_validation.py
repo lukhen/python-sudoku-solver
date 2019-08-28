@@ -151,3 +151,33 @@ def test_invalid_first_column():
           B, B, B, B, B, B, B, B, B]
     # fmt: on
     assert is_valid(bd) is False
+
+
+def test_invalid_first_column_2():
+    # fmt: off
+    bd = [1, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          1, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B]
+    # fmt: on
+    assert is_valid(bd) is False
+
+
+def test_invalid_first_column_3():
+    # fmt: off
+    bd = [B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          1, B, B, B, B, B, B, B, B,
+          1, B, B, B, B, B, B, B, B]
+    # fmt: on
+    assert is_valid(bd) is False
