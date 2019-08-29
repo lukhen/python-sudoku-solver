@@ -15,6 +15,16 @@ ROW_INDICES = [[0, 1, 2, 3, 4, 5, 6, 7, 8],
                [54, 55, 56, 57, 58, 59, 60, 61, 62],
                [63, 64, 65, 66, 67, 68, 69, 70, 71],
                [72, 73, 74, 75, 76, 77, 78, 79, 80]]
+
+COLUMN_INDICES = [[0, 9, 18, 27, 36, 45, 54, 63, 72],
+                  [1, 10, 19, 28, 37, 46, 55, 64, 73],
+                  [2, 11, 20, 29, 38, 47, 56, 65, 74],
+                  [3, 12, 21, 30, 39, 48, 57, 66, 75],
+                  [4, 13, 22, 31, 40, 49, 58, 67, 76],
+                  [5, 14, 23, 32, 41, 50, 59, 68, 77],
+                  [6, 15, 24, 33, 42, 51, 60, 69, 78],
+                  [7, 16, 25, 34, 43, 52, 61, 70, 79],
+                  [8, 17, 26, 35, 44, 53, 62, 71, 80]]
 # fmt: on
 
 
@@ -32,15 +42,15 @@ def is_valid(bd: "Board") -> bool:
         return True
 
     all_rows = [[bd[i] for i in row] for row in ROW_INDICES]
-    first_col = [bd[0], bd[9], bd[18], bd[27], bd[36], bd[45], bd[54], bd[63], bd[72]]
-    second_col = [bd[1], bd[10], bd[19], bd[28], bd[37], bd[46], bd[55], bd[64], bd[73]]
+    all_cols = [[bd[i] for i in col] for col in COLUMN_INDICES]
+    first_col = all_cols[0]
+    second_col = all_cols[1]
     if any([has_duplicates(row) for row in all_rows]):
         return False
     elif has_duplicates(first_col):
         return False
     elif has_duplicates(second_col):
         return False
-
     else:
         return True
 
