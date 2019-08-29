@@ -211,3 +211,18 @@ def test_invalid_last_column():
           B, B, B, B, B, B, B, B, B]
     # fmt: on
     assert is_valid(bd) is False
+
+
+def test_invalid_middle_column():
+    # fmt: off
+    bd = [B, B, B, B, B, B, B, B, B,
+          B, B, B, 1, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, 1, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B]
+    # fmt: on
+    assert is_valid(bd) is False
