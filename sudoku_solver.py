@@ -48,11 +48,7 @@ def is_valid(bd: "Board") -> bool:
     last_col = all_cols[-1]
     if any([has_duplicates(row) for row in all_rows]):
         return False
-    elif has_duplicates(first_col):
-        return False
-    elif has_duplicates(second_col):
-        return False
-    elif has_duplicates(last_col):
+    elif any([has_duplicates(col) for col in all_cols]):
         return False
     else:
         return True
