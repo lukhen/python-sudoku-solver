@@ -25,6 +25,16 @@ COLUMN_INDICES = [[0, 9, 18, 27, 36, 45, 54, 63, 72],
                   [6, 15, 24, 33, 42, 51, 60, 69, 78],
                   [7, 16, 25, 34, 43, 52, 61, 70, 79],
                   [8, 17, 26, 35, 44, 53, 62, 71, 80]]
+
+BOX_INDICES = [[0, 1, 2, 9, 10, 11, 18, 19, 20],
+               [3, 4, 5, 12, 13, 14, 21, 22, 23],
+               [6, 7, 8, 15, 16, 17, 24, 25, 26],
+               [27, 28, 29, 36, 37, 38, 45, 46, 47],
+               [30, 31, 32, 39, 40, 41, 48, 49, 50],
+               [33, 34, 35, 42, 43, 44, 51, 52, 53],
+               [54, 55, 56, 63, 64, 65, 72, 73, 74],
+               [57, 58, 59, 66, 67, 68, 75, 76, 77],
+               [60, 61, 62, 69, 70, 71, 78, 79, 80]]
 # fmt: on
 
 
@@ -43,8 +53,8 @@ def is_valid(bd: "Board") -> bool:
 
     all_rows = [[bd[i] for i in row] for row in ROW_INDICES]
     all_cols = [[bd[i] for i in col] for col in COLUMN_INDICES]
-    first_box = [bd[0], bd[1], bd[2], bd[9], bd[10], bd[11], bd[18], bd[19], bd[20]]
-    second_box = [bd[3], bd[4], bd[5], bd[12], bd[13], bd[14], bd[21], bd[22], bd[23]]
+    first_box = [bd[i] for i in BOX_INDICES[0]]
+    second_box = [bd[i] for i in BOX_INDICES[1]]
 
     if any([has_duplicates(row) for row in all_rows]):
         return False
