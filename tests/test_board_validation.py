@@ -286,3 +286,33 @@ def test_invalid_second_box():
           B, B, B, B, B, B, B, B, B]
     # fmt: on
     assert is_valid(bd) is False
+
+
+def test_invalid_last_box():
+    # fmt: off
+    bd = [B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, 1, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, 1, B]
+    # fmt: on
+    assert is_valid(bd) is False
+
+
+def test_invalid_last_box_2():
+    # fmt: off
+    bd = [B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, 1, B, B,
+          B, B, B, B, B, B, B, B, B,
+          B, B, B, B, B, B, B, B, 1]
+    # fmt: on
+    assert is_valid(bd) is False

@@ -55,6 +55,7 @@ def is_valid(bd: "Board") -> bool:
     all_cols = [[bd[i] for i in col] for col in COLUMN_INDICES]
     first_box = [bd[i] for i in BOX_INDICES[0]]
     second_box = [bd[i] for i in BOX_INDICES[1]]
+    last_box = [bd[i] for i in BOX_INDICES[-1]]
 
     if any([has_duplicates(row) for row in all_rows]):
         return False
@@ -63,6 +64,8 @@ def is_valid(bd: "Board") -> bool:
     elif has_duplicates(first_box):
         return False
     elif has_duplicates(second_box):
+        return False
+    elif has_duplicates(last_box):
         return False
     else:
         return True
