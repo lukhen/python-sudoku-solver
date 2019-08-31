@@ -35,6 +35,8 @@ BOX_INDICES = [[0, 1, 2, 9, 10, 11, 18, 19, 20],
                [54, 55, 56, 63, 64, 65, 72, 73, 74],
                [57, 58, 59, 66, 67, 68, 75, 76, 77],
                [60, 61, 62, 69, 70, 71, 78, 79, 80]]
+
+UNIT_INDICES = ROW_INDICES + COLUMN_INDICES + BOX_INDICES
 # fmt: on
 
 
@@ -51,15 +53,9 @@ def is_valid(bd: "Board") -> bool:
     if is_empty(bd):
         return True
 
-    all_rows = [[bd[i] for i in row] for row in ROW_INDICES]
-    all_cols = [[bd[i] for i in col] for col in COLUMN_INDICES]
-    all_boxes = [[bd[i] for i in box] for box in BOX_INDICES]
+    units = [[bd[i] for i in unit] for unit in UNIT_INDICES]
 
-    if any([has_duplicates(row) for row in all_rows]):
-        return False
-    elif any([has_duplicates(col) for col in all_cols]):
-        return False
-    elif any([has_duplicates(box) for box in all_boxes]):
+    if any([has_duplicates(unit) for unit in units]):
         return False
     else:
         return True
