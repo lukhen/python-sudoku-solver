@@ -80,11 +80,12 @@ def solve(bd: "Board") -> "Board" or False:
     """
     if is_valid(bd):
         if bd[0] is None and all(bd[1:]):
-            result = replace_square_0_with_3(bd)
-            if is_valid(result):
-                return result
+            replace3 = replace_square_0_with_3(bd)
+            replace1 = replace_square_0_with_1(bd)
+            if is_valid(replace3):
+                return replace3
             else:
-                return replace_square_0_with_1(bd)
+                return replace1
         return bd
     else:
         return False
