@@ -61,6 +61,12 @@ def is_valid(bd: "Board") -> bool:
         return True
 
 
+def replace_square_0_with_3(bd):
+    res = [3]
+    res.extend(bd[1:])
+    return res
+
+
 def solve(bd: "Board") -> "Board" or False:
     """
     Produce board with all squares filled,
@@ -68,9 +74,7 @@ def solve(bd: "Board") -> "Board" or False:
     """
     if is_valid(bd):
         if bd[0] is None and all(bd[1:]):
-            res = [3]
-            res.extend(bd[1:])
-            return res
+            return replace_square_0_with_3(bd)
         return bd
     else:
         return False
