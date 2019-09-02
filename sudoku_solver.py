@@ -67,6 +67,10 @@ def solve(bd: "Board") -> "Board" or False:
     or False if it's unsolvable
     """
     if is_valid(bd):
+        if bd[0] is None and all(bd[1:]):
+            res = [3]
+            res.extend(bd[1:])
+            return res
         return bd
     else:
         return False
