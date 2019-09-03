@@ -72,11 +72,7 @@ def solve(bd: "Board") -> "Board" or False:
     """
     if is_valid(bd):
         if bd[0] is None and all(bd[1:]):
-            next_boards = [
-                replace_square_0(bd, 1),
-                replace_square_0(bd, 2),
-                replace_square_0(bd, 3),
-            ]
+            next_boards = [replace_square_0(bd, val) for val in range(1, 9)]
 
             for next_board in next_boards:
                 if is_valid(next_board):
