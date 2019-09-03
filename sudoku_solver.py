@@ -61,16 +61,8 @@ def is_valid(bd: "Board") -> bool:
         return True
 
 
-def replace_square_0_with_3(bd):
-    return [3, *bd[1:]]
-
-
-def replace_square_0_with_2(bd):
-    return [2, *bd[1:]]
-
-
-def replace_square_0_with_1(bd):
-    return [1, *bd[1:]]
+def replace_square_0(bd, value):
+    return [value, *bd[1:]]
 
 
 def solve(bd: "Board") -> "Board" or False:
@@ -80,9 +72,9 @@ def solve(bd: "Board") -> "Board" or False:
     """
     if is_valid(bd):
         if bd[0] is None and all(bd[1:]):
-            replace3 = replace_square_0_with_3(bd)
-            replace1 = replace_square_0_with_1(bd)
-            replace2 = replace_square_0_with_2(bd)
+            replace3 = replace_square_0(bd, 3)
+            replace1 = replace_square_0(bd, 1)
+            replace2 = replace_square_0(bd, 2)
             if is_valid(replace3):
                 return replace3
             elif is_valid(replace2):
