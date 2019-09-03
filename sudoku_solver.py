@@ -67,6 +67,12 @@ def replace_square_0_with_3(bd):
     return res
 
 
+def replace_square_0_with_2(bd):
+    res = [2]
+    res.extend(bd[1:])
+    return res
+
+
 def replace_square_0_with_1(bd):
     res = [1]
     res.extend(bd[1:])
@@ -82,8 +88,11 @@ def solve(bd: "Board") -> "Board" or False:
         if bd[0] is None and all(bd[1:]):
             replace3 = replace_square_0_with_3(bd)
             replace1 = replace_square_0_with_1(bd)
+            replace2 = replace_square_0_with_2(bd)
             if is_valid(replace3):
                 return replace3
+            elif is_valid(replace2):
+                return replace2
             else:
                 return replace1
         return bd
