@@ -70,13 +70,15 @@ def solve(bd: "Board") -> "Board" or False:
     Produce board with all squares filled,
     or False if it's unsolvable
     """
-    if is_valid(bd):
-        if bd[0] is None and all(bd[1:]):
-            possible_solutions = [replace_square_0(bd, val) for val in range(1, 9)]
-
-            for solution in possible_solutions:
-                if is_valid(solution):
-                    return solution
-        return bd
-    else:
+    if not is_valid(bd):
         return False
+
+    if all(bd):
+        return bd
+
+    if bd[0] is None and all(bd[1:]):
+        possible_solutions = [replace_square_0(bd, val) for val in range(1, 9)]
+
+        for solution in possible_solutions:
+            if is_valid(solution):
+                return solution
