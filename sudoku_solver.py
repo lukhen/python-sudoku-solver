@@ -3,7 +3,7 @@
 # Square: oneOf:
 #          - Value
 #          - None
-# Value: Integer[0, 9]
+# Value: Integer[1, 9]
 
 # fmt: off
 ROW_INDICES = [[0, 1, 2, 3, 4, 5, 6, 7, 8],
