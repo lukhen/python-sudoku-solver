@@ -76,7 +76,8 @@ def solve(bd: "Board") -> "Board" or False:
     if all(bd):
         return bd
 
-    if bd[0] is None and all(bd[1:]):
+    square_0_empty = bd[0] is None and all(bd[1:])
+    if square_0_empty:
         next_boards = [replace_square_0(bd, val) for val in range(1, 9)]
 
         for next_board in next_boards:
