@@ -78,8 +78,8 @@ def solve(bd: "Board") -> "Board" or False:
 
     square_0_empty = bd[0] is None and all(bd[1:])
     if square_0_empty:
-        next_boards = [replace_square_0(bd, val) for val in range(1, 9)]
-
-        for next_board in next_boards:
-            if is_valid(next_board):
-                return next_board
+        valid_next_boards = filter(
+            is_valid, [replace_square_0(bd, val) for val in range(1, 9)]
+        )
+        if valid_next_boards:
+            return next(valid_next_boards)
