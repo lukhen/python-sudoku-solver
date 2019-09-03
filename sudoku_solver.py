@@ -76,7 +76,8 @@ def solve(bd: "Board") -> "Board" or False:
     if all(bd):
         return bd
 
-    if bd[0] is None and all(bd[1:]):
+    is_only_square_0_blank = bd[0] is None and all(bd[1:])
+    if is_only_square_0_blank:
         possible_solutions = [replace_square_0(bd, val) for val in range(1, 9)]
 
         for solution in possible_solutions:
