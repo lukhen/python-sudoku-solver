@@ -62,21 +62,15 @@ def is_valid(bd: "Board") -> bool:
 
 
 def replace_square_0_with_3(bd):
-    res = [3]
-    res.extend(bd[1:])
-    return res
+    return [3, *bd[1:]]
 
 
 def replace_square_0_with_2(bd):
-    res = [2]
-    res.extend(bd[1:])
-    return res
+    return [2, *bd[1:]]
 
 
 def replace_square_0_with_1(bd):
-    res = [1]
-    res.extend(bd[1:])
-    return res
+    return [1, *bd[1:]]
 
 
 def solve(bd: "Board") -> "Board" or False:
