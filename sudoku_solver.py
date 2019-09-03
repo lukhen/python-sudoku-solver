@@ -75,12 +75,11 @@ def solve(bd: "Board") -> "Board" or False:
             replace3 = replace_square_0(bd, 3)
             replace1 = replace_square_0(bd, 1)
             replace2 = replace_square_0(bd, 2)
-            if is_valid(replace3):
-                return replace3
-            elif is_valid(replace2):
-                return replace2
-            else:
-                return replace1
+            possible_replaces = [replace1, replace2, replace3]
+
+            for replace in possible_replaces:
+                if is_valid(replace):
+                    return replace
         return bd
     else:
         return False
