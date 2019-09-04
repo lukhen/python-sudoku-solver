@@ -69,6 +69,10 @@ def replace_square_1(bd, value):
     return [*bd[:1], value, *bd[2:]]
 
 
+def replace_square_2(bd, value):
+    return [*bd[:2], value, *bd[3:]]
+
+
 def solve(bd: "Board") -> "Board" or False:
     """
     Produce board with all squares filled,
@@ -82,15 +86,17 @@ def solve(bd: "Board") -> "Board" or False:
 
     is_square_0_the_only_blank = bd[0] is None and all(bd[1:])
     is_square_1_the_only_blank = bd[1] is None and all([*bd[:1], *bd[2:]])
+    is_square_2_the_only_blank = bd[2] is None and all([*bd[:2], *bd[3:]])
     if is_square_0_the_only_blank:
         potential_solutions = [replace_square_0(bd, val) for val in range(1, 10)]
-        solutions = filter(
-            is_valid, potential_solutions
-        )
-
+        solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     elif is_square_1_the_only_blank:
         potential_solutions = [replace_square_1(bd, val) for val in range(1, 10)]
+        solutions = filter(is_valid, potential_solutions)
+        return next(solutions)
+    elif is_square_2_the_only_blank:
+        potential_solutions = [replace_square_2(bd, val) for val in range(1, 10)]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     return False
