@@ -62,7 +62,7 @@ def is_valid(bd: "Board") -> bool:
 
 
 def replace_square_0(bd, value):
-    return [value, *bd[1:]]
+    return [*bd[:0], value, *bd[1:]]
 
 
 def replace_square_1(bd, value):
