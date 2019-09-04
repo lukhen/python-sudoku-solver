@@ -90,8 +90,6 @@ def solve(bd: "Board") -> "Board" or False:
         return next(possible_solutions)
     elif is_square_1_the_only_blank:
         potential_solutions = [replace_square_1(bd, val) for val in range(1, 10)]
-
-        for potential_solution in potential_solutions:
-            if is_valid(potential_solution):
-                return potential_solution
+        solutions = filter(is_valid, potential_solutions)
+        return next(solutions)
     return False
