@@ -89,13 +89,10 @@ def solve(bd: "Board") -> "Board" or False:
 
         return next(possible_solutions)
     elif is_square_1_the_only_blank:
-        potential_solution_1 = replace_square_1(bd, 1)
-        potential_solution_2 = replace_square_1(bd, 2)
-        potential_solution_9 = replace_square_1(bd, 9)
         potential_solutions = [
-            potential_solution_1,
-            potential_solution_2,
-            potential_solution_9,
+            replace_square_1(bd, 1),
+            replace_square_1(bd, 2),
+            replace_square_1(bd, 9),
         ]
 
         for potential_solution in potential_solutions:
