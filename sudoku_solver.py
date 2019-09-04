@@ -86,11 +86,15 @@ def solve(bd: "Board") -> "Board" or False:
     elif first_2_squares_are_blank(bd):
         potential_solution_1 = [3, 9, *bd[2:]]
         potential_solution_2 = [1, 2, *bd[2:]]
+        potential_solution_3 = [2, 1, *bd[2:]]
         if is_valid(potential_solution_1):
             return potential_solution_1
         elif is_valid(potential_solution_2):
             return potential_solution_2
+        elif is_valid(potential_solution_3):
+            return potential_solution_3
     return False
+
 
 def first_2_squares_are_blank(bd):
     return bd[0] is None and bd[1] is None
