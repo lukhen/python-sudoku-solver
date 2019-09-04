@@ -92,11 +92,13 @@ def solve(bd: "Board") -> "Board" or False:
         potential_solution_1 = replace_square_1(bd, 1)
         potential_solution_2 = replace_square_1(bd, 2)
         potential_solution_9 = replace_square_1(bd, 9)
+        potential_solutions = [
+            potential_solution_1,
+            potential_solution_2,
+            potential_solution_9,
+        ]
 
-        if is_valid(potential_solution_1):
-            return potential_solution_1
-        elif is_valid(potential_solution_2):
-            return potential_solution_2
-        else:
-            return potential_solution_9
+        for potential_solution in potential_solutions:
+            if is_valid(potential_solution):
+                return potential_solution
     return False
