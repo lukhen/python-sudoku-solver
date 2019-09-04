@@ -65,6 +65,10 @@ def replace_square_0(bd, value):
     return [value, *bd[1:]]
 
 
+def repalace_square_1_with_1(bd):
+    return [*bd[:1], 1, *bd[2:]]
+
+
 def solve(bd: "Board") -> "Board" or False:
     """
     Produce board with all squares filled,
@@ -85,6 +89,6 @@ def solve(bd: "Board") -> "Board" or False:
 
         return next(possible_solutions)
     elif is_square_1_the_only_blank:
-        return [*bd[:1], 1, *bd[2:]]
+        return repalace_square_1_with_1(bd)
 
     return False
