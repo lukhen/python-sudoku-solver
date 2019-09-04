@@ -65,16 +65,8 @@ def replace_square_0(bd, value):
     return [value, *bd[1:]]
 
 
-def repalace_square_1_with_1(bd):
-    return [*bd[:1], 1, *bd[2:]]
-
-
-def repalace_square_1_with_2(bd):
-    return [*bd[:1], 2, *bd[2:]]
-
-
-def repalace_square_1_with_9(bd):
-    return [*bd[:1], 9, *bd[2:]]
+def replace_square_1(bd, value):
+    return [*bd[:1], value, *bd[2:]]
 
 
 def solve(bd: "Board") -> "Board" or False:
@@ -97,9 +89,9 @@ def solve(bd: "Board") -> "Board" or False:
 
         return next(possible_solutions)
     elif is_square_1_the_only_blank:
-        potential_solution_1 = repalace_square_1_with_1(bd)
-        potential_solution_2 = repalace_square_1_with_2(bd)
-        potential_solution_9 = repalace_square_1_with_9(bd)
+        potential_solution_1 = replace_square_1(bd, 1)
+        potential_solution_2 = replace_square_1(bd, 2)
+        potential_solution_9 = replace_square_1(bd, 9)
 
         if is_valid(potential_solution_1):
             return potential_solution_1
