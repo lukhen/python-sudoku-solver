@@ -88,15 +88,10 @@ def solve(bd: "Board") -> "Board" or False:
 
 
 def find_blank_square_in_first_3_positions(bd):
-    is_square_0_the_only_blank = bd[0] is None and all([*bd[:0], bd[1:]])
-    is_square_1_the_only_blank = bd[1] is None and all([*bd[:1], *bd[2:]])
-    is_square_2_the_only_blank = bd[2] is None and all([*bd[:2], *bd[3:]])
 
     blank_square = None
-    if is_square_0_the_only_blank:
-        blank_square = 0
-    elif is_square_1_the_only_blank:
-        blank_square = 1
-    elif is_square_2_the_only_blank:
-        blank_square = 2
+    for i in range(0, 81):
+        if bd[i] is None and all([*bd[:i], bd[i + 1 :]]):
+            blank_square = i
+
     return blank_square
