@@ -76,15 +76,19 @@ def solve(bd: "Board") -> "Board" or False:
     if all(bd):
         return bd
 
-    single_blank_square = find_single_blank_square(bd)
-
-    if single_blank_square is not None:
+    if has_exactly_one_blank_square(bd):
         potential_solutions = [
-            replace_square(bd, single_blank_square, val) for val in range(1, 10)
+            replace_square(bd, find_single_blank_square(bd), val)
+            for val in range(1, 10)
         ]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
+
     return False
+
+
+def has_exactly_one_blank_square(bd):
+    return find_single_blank_square(bd) is not None
 
 
 def find_single_blank_square(bd):
