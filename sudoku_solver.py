@@ -73,6 +73,10 @@ def repalace_square_1_with_2(bd):
     return [*bd[:1], 2, *bd[2:]]
 
 
+def repalace_square_1_with_9(bd):
+    return [*bd[:1], 9, *bd[2:]]
+
+
 def solve(bd: "Board") -> "Board" or False:
     """
     Produce board with all squares filled,
@@ -95,6 +99,12 @@ def solve(bd: "Board") -> "Board" or False:
     elif is_square_1_the_only_blank:
         potential_solution_1 = repalace_square_1_with_1(bd)
         potential_solution_2 = repalace_square_1_with_2(bd)
-        return potential_solution_1 if is_valid(potential_solution_1) else potential_solution_2
+        potential_solution_9 = repalace_square_1_with_9(bd)
 
+        if is_valid(potential_solution_1):
+            return potential_solution_1
+        elif is_valid(potential_solution_2):
+            return potential_solution_2
+        else:
+            return potential_solution_9
     return False
