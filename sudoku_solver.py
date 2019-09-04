@@ -84,14 +84,7 @@ def solve(bd: "Board") -> "Board" or False:
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     elif first_2_squares_are_blank(bd):
-        potential_solution_1 = [3, 9, *bd[2:]]
-        potential_solution_2 = [1, 2, *bd[2:]]
-        potential_solution_3 = [2, 1, *bd[2:]]
-        potential_solutions = [
-            potential_solution_1,
-            potential_solution_2,
-            potential_solution_3,
-        ]
+        potential_solutions = [[3, 9, *bd[2:]], [1, 2, *bd[2:]], [2, 1, *bd[2:]]]
         for potential_solution in potential_solutions:
             if is_valid(potential_solution):
                 return potential_solution
