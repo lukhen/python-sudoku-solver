@@ -76,22 +76,22 @@ def solve(bd: "Board") -> "Board" or False:
     if all(bd):
         return bd
 
-    blank_square = find_blank_square_in_first_3_positions(bd)
+    single_blank_square = find_single_blank_square(bd)
 
-    if blank_square is not None:
+    if single_blank_square is not None:
         potential_solutions = [
-            replace_square(bd, blank_square, val) for val in range(1, 10)
+            replace_square(bd, single_blank_square, val) for val in range(1, 10)
         ]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     return False
 
 
-def find_blank_square_in_first_3_positions(bd):
+def find_single_blank_square(bd):
 
     blank_square = None
     for i in range(0, 81):
-        if bd[i] is None and all([*bd[:i], bd[i + 1 :]]):
+        if bd[i] is None and all([*bd[:i], *bd[i + 1 :]]):
             blank_square = i
 
     return blank_square
