@@ -84,7 +84,12 @@ def solve(bd: "Board") -> "Board" or False:
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     elif bd[0] is None and bd[1] is None:
-        return [3, 9, *bd[2:]]
+        potential_solution_1 = [3, 9, *bd[2:]]
+        potential_solution_2 = [1, 2, *bd[2:]]
+        if is_valid(potential_solution_1):
+            return potential_solution_1
+        elif is_valid(potential_solution_2):
+            return potential_solution_2
     return False
 
 
