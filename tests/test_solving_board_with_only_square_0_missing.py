@@ -3,7 +3,7 @@ from sudoku_solver import solve
 B = None
 
 
-def test_finding_a_missing_3_at_position_0_0():
+def test_missing_3():
     # fmt: off
     bd = [B, 9, 6, 2, 7, 8, 4, 5, 1,
           4, 8, 5, 9, 1, 3, 7, 2, 6,
@@ -28,7 +28,7 @@ def test_finding_a_missing_3_at_position_0_0():
     # fmt: on
 
 
-def test_finding_a_missing_1_at_position_0_0():
+def test_missing_1():
     # fmt: off
     bd = [B, 2, 3, 4, 5, 6, 7, 8, 9,
           7, 8, 9, 1, 2, 3, 4, 5, 6,
@@ -53,7 +53,7 @@ def test_finding_a_missing_1_at_position_0_0():
     # fmt: on
 
 
-def test_finding_a_missing_2_at_position_0_0():
+def test_missing_2():
     # fmt: off
     bd = [B, 1, 3, 4, 5, 6, 7, 8, 9,
           7, 8, 9, 2, 1, 3, 4, 5, 6,
@@ -78,7 +78,7 @@ def test_finding_a_missing_2_at_position_0_0():
     # fmt: on
 
 
-def test_finding_a_missing_2_at_position_0_0():
+def test_missing_9():
     # fmt: off
 
     bd = [B, 1, 2, 3, 4, 5, 6, 7, 8,
