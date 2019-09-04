@@ -86,8 +86,9 @@ def solve(bd: "Board") -> "Board" or False:
         return next(solutions)
     return False
 
+
 def find_blank_square_in_first_3_positions(bd):
-    is_square_0_the_only_blank = bd[0] is None and all(bd[1:])
+    is_square_0_the_only_blank = bd[0] is None and all([*bd[:0], bd[1:]])
     is_square_1_the_only_blank = bd[1] is None and all([*bd[:1], *bd[2:]])
     is_square_2_the_only_blank = bd[2] is None and all([*bd[:2], *bd[3:]])
 
