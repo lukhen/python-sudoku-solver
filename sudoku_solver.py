@@ -79,16 +79,19 @@ def solve(bd: "Board") -> "Board" or False:
     is_square_0_the_only_blank = bd[0] is None and all(bd[1:])
     is_square_1_the_only_blank = bd[1] is None and all([*bd[:1], *bd[2:]])
     is_square_2_the_only_blank = bd[2] is None and all([*bd[:2], *bd[3:]])
+
+    blank_square = None
     if is_square_0_the_only_blank:
-        potential_solutions = [replace_square(bd, 0, val) for val in range(1, 10)]
-        solutions = filter(is_valid, potential_solutions)
-        return next(solutions)
+        blank_square = 0
     elif is_square_1_the_only_blank:
-        potential_solutions = [replace_square(bd, 1, val) for val in range(1, 10)]
-        solutions = filter(is_valid, potential_solutions)
-        return next(solutions)
+        blank_square = 1
     elif is_square_2_the_only_blank:
-        potential_solutions = [replace_square(bd, 2, val) for val in range(1, 10)]
+        blank_square = 2
+
+    if blank_square is not None:
+        potential_solutions = [
+            replace_square(bd, blank_square, val) for val in range(1, 10)
+        ]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     return False
