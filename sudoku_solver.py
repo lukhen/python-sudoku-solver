@@ -83,3 +83,7 @@ def solve(bd: "Board") -> "Board" or False:
         )
 
         return next(possible_solutions)
+    elif bd[1] is None and all([*bd[:1], *bd[2:]]):
+        return [*bd[:1], 1, *bd[2:]]
+
+    return False
