@@ -83,7 +83,7 @@ def solve(bd: "Board") -> "Board" or False:
         ]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
-    elif bd[0] is None and bd[1] is None:
+    elif first_2_squares_are_blank(bd):
         potential_solution_1 = [3, 9, *bd[2:]]
         potential_solution_2 = [1, 2, *bd[2:]]
         if is_valid(potential_solution_1):
@@ -91,6 +91,9 @@ def solve(bd: "Board") -> "Board" or False:
         elif is_valid(potential_solution_2):
             return potential_solution_2
     return False
+
+def first_2_squares_are_blank(bd):
+    return bd[0] is None and bd[1] is None
 
 
 def has_exactly_one_blank_square(bd):
