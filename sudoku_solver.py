@@ -61,16 +61,8 @@ def is_valid(bd: "Board") -> bool:
         return True
 
 
-def replace_square_0(bd, value):
-    return [*bd[:0], value, *bd[1:]]
-
-
-def replace_square_1(bd, value):
-    return [*bd[:1], value, *bd[2:]]
-
-
-def replace_square_2(bd, value):
-    return [*bd[:2], value, *bd[3:]]
+def replace_square(bd, square, value):
+    return [*bd[:square], value, *bd[square + 1 :]]
 
 
 def solve(bd: "Board") -> "Board" or False:
@@ -88,15 +80,15 @@ def solve(bd: "Board") -> "Board" or False:
     is_square_1_the_only_blank = bd[1] is None and all([*bd[:1], *bd[2:]])
     is_square_2_the_only_blank = bd[2] is None and all([*bd[:2], *bd[3:]])
     if is_square_0_the_only_blank:
-        potential_solutions = [replace_square_0(bd, val) for val in range(1, 10)]
+        potential_solutions = [replace_square(bd, 0, val) for val in range(1, 10)]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     elif is_square_1_the_only_blank:
-        potential_solutions = [replace_square_1(bd, val) for val in range(1, 10)]
+        potential_solutions = [replace_square(bd, 1, val) for val in range(1, 10)]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     elif is_square_2_the_only_blank:
-        potential_solutions = [replace_square_2(bd, val) for val in range(1, 10)]
+        potential_solutions = [replace_square(bd, 2, val) for val in range(1, 10)]
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     return False
