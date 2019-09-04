@@ -87,12 +87,14 @@ def solve(bd: "Board") -> "Board" or False:
         potential_solution_1 = [3, 9, *bd[2:]]
         potential_solution_2 = [1, 2, *bd[2:]]
         potential_solution_3 = [2, 1, *bd[2:]]
-        if is_valid(potential_solution_1):
-            return potential_solution_1
-        elif is_valid(potential_solution_2):
-            return potential_solution_2
-        elif is_valid(potential_solution_3):
-            return potential_solution_3
+        potential_solutions = [
+            potential_solution_1,
+            potential_solution_2,
+            potential_solution_3,
+        ]
+        for potential_solution in potential_solutions:
+            if is_valid(potential_solution):
+                return potential_solution
     return False
 
 
