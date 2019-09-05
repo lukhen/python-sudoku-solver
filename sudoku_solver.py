@@ -88,9 +88,9 @@ def solve(bd: "Board") -> "Board" or False:
         possible_boards_with_square_0_filled = [
             replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
-        second_blank_square = 1
+        first_blank_square_in_board_partially_filled = 1
         possible_boards_with_square_0_and_1_filled = [
-            replace_square(partial_solution, second_blank_square, value)
+            replace_square(partial_solution, first_blank_square_in_board_partially_filled, value)
             for value in range(1, 10)
             for partial_solution in possible_boards_with_square_0_filled
         ]
@@ -103,9 +103,9 @@ def solve(bd: "Board") -> "Board" or False:
         possible_boards_with_square_0_filled = [
             replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
-        second_blank_square = 2
+        first_blank_square_in_board_partially_filled = 2
         possible_boards_with_square_0_and_2_filled = [
-            replace_square(partial_solution, second_blank_square, value)
+            replace_square(partial_solution, first_blank_square_in_board_partially_filled, value)
             for value in range(1, 10)
             for partial_solution in possible_boards_with_square_0_filled
         ]
