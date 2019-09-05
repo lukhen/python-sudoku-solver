@@ -96,6 +96,20 @@ def solve(bd: "Board") -> "Board" or False:
             is_valid, possible_boards_with_square_0_and_1_filled
         )
         return next(potential_solutions)
+    elif bd[0] is None and bd[2] is None:
+        possible_boards_with_square_0_filled = [
+            replace_square(bd, 0, value) for value in range(1, 10)
+        ]
+        possible_boards_with_square_0_and_2_filled = [
+            replace_square(partial_solution, 2, value)
+            for value in range(1, 10)
+            for partial_solution in possible_boards_with_square_0_filled
+        ]
+        potential_solutions = filter(
+            is_valid, possible_boards_with_square_0_and_2_filled
+        )
+        return next(potential_solutions)
+
     return False
 
 
