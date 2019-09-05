@@ -84,11 +84,13 @@ def solve(bd: "Board") -> "Board" or False:
         solutions = filter(is_valid, possible_boards_with_square_0_filled)
         return next(solutions)
     elif squares_0_and_1_blank(bd):
+        first_blank_square = 0
         possible_boards_with_square_0_filled = [
-            replace_square(bd, 0, value) for value in range(1, 10)
+            replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
+        second_blank_square = 1
         possible_boards_with_square_0_and_1_filled = [
-            replace_square(partial_solution, 1, value)
+            replace_square(partial_solution, second_blank_square, value)
             for value in range(1, 10)
             for partial_solution in possible_boards_with_square_0_filled
         ]
@@ -97,11 +99,13 @@ def solve(bd: "Board") -> "Board" or False:
         )
         return next(potential_solutions)
     elif squares_0_and_2_blank(bd):
+        first_blank_square = 0
         possible_boards_with_square_0_filled = [
-            replace_square(bd, 0, value) for value in range(1, 10)
+            replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
+        second_blank_square = 2
         possible_boards_with_square_0_and_2_filled = [
-            replace_square(partial_solution, 2, value)
+            replace_square(partial_solution, second_blank_square, value)
             for value in range(1, 10)
             for partial_solution in possible_boards_with_square_0_filled
         ]
@@ -111,6 +115,7 @@ def solve(bd: "Board") -> "Board" or False:
         return next(potential_solutions)
 
     return False
+
 
 def squares_0_and_2_blank(bd):
     return bd[0] is None and bd[2] is None
