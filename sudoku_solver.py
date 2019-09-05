@@ -96,7 +96,7 @@ def solve(bd: "Board") -> "Board" or False:
             is_valid, possible_boards_with_square_0_and_1_filled
         )
         return next(potential_solutions)
-    elif bd[0] is None and bd[2] is None:
+    elif squares_0_and_2_blank(bd):
         possible_boards_with_square_0_filled = [
             replace_square(bd, 0, value) for value in range(1, 10)
         ]
@@ -111,6 +111,9 @@ def solve(bd: "Board") -> "Board" or False:
         return next(potential_solutions)
 
     return False
+
+def squares_0_and_2_blank(bd):
+    return bd[0] is None and bd[2] is None
 
 
 def first_2_squares_are_blank(bd):
