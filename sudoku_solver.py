@@ -77,40 +77,48 @@ def solve(bd: "Board") -> "Board" or False:
         return bd
 
     if has_exactly_one_blank_square(bd):
-        possible_boards_with_square_0_filled = [
+        possible_boards_with_first_blank_square_filled = [
             replace_square(bd, find_single_blank_square(bd), val)
             for val in range(1, 10)
         ]
-        solutions = filter(is_valid, possible_boards_with_square_0_filled)
+        solutions = filter(is_valid, possible_boards_with_first_blank_square_filled)
         return next(solutions)
     elif squares_0_and_1_blank(bd):
         first_blank_square = find_first_blank_square(bd)
-        possible_boards_with_square_0_filled = [
+        possible_boards_with_first_blank_square_filled = [
             replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
-        first_blank_square_in_board_partially_filled = 1
-        possible_boards_with_square_0_and_1_filled = [
-            replace_square(partial_solution, first_blank_square_in_board_partially_filled, value)
+        first_blank_square_in_board_partially_filled = find_first_blank_square(
+            possible_boards_with_first_blank_square_filled[0]
+        )
+        possible_boards_with_both_blank_squares_filled = [
+            replace_square(
+                partial_solution, first_blank_square_in_board_partially_filled, value
+            )
             for value in range(1, 10)
-            for partial_solution in possible_boards_with_square_0_filled
+            for partial_solution in possible_boards_with_first_blank_square_filled
         ]
         potential_solutions = filter(
-            is_valid, possible_boards_with_square_0_and_1_filled
+            is_valid, possible_boards_with_both_blank_squares_filled
         )
         return next(potential_solutions)
     elif squares_0_and_2_blank(bd):
         first_blank_square = find_first_blank_square(bd)
-        possible_boards_with_square_0_filled = [
+        possible_boards_with_first_blank_square_filled = [
             replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
-        first_blank_square_in_board_partially_filled = 2
-        possible_boards_with_square_0_and_2_filled = [
-            replace_square(partial_solution, first_blank_square_in_board_partially_filled, value)
+        first_blank_square_in_board_partially_filled = find_first_blank_square(
+            possible_boards_with_first_blank_square_filled[0]
+        )
+        possible_boards_with_both_blank_squares_filled = [
+            replace_square(
+                partial_solution, first_blank_square_in_board_partially_filled, value
+            )
             for value in range(1, 10)
-            for partial_solution in possible_boards_with_square_0_filled
+            for partial_solution in possible_boards_with_first_blank_square_filled
         ]
         potential_solutions = filter(
-            is_valid, possible_boards_with_square_0_and_2_filled
+            is_valid, possible_boards_with_both_blank_squares_filled
         )
         return next(potential_solutions)
 
