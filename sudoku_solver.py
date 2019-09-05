@@ -84,7 +84,7 @@ def solve(bd: "Board") -> "Board" or False:
         solutions = filter(is_valid, possible_boards_with_square_0_filled)
         return next(solutions)
     elif squares_0_and_1_blank(bd):
-        first_blank_square = 0
+        first_blank_square = find_first_blank_square(bd)
         possible_boards_with_square_0_filled = [
             replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
@@ -99,7 +99,7 @@ def solve(bd: "Board") -> "Board" or False:
         )
         return next(potential_solutions)
     elif squares_0_and_2_blank(bd):
-        first_blank_square = 0
+        first_blank_square = find_first_blank_square(bd)
         possible_boards_with_square_0_filled = [
             replace_square(bd, first_blank_square, value) for value in range(1, 10)
         ]
@@ -115,6 +115,12 @@ def solve(bd: "Board") -> "Board" or False:
         return next(potential_solutions)
 
     return False
+
+
+def find_first_blank_square(bd):
+    for i in range(0, 81):
+        if bd[i] is None:
+            return i
 
 
 def squares_0_and_2_blank(bd):
