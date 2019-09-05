@@ -77,11 +77,11 @@ def solve(bd: "Board") -> "Board" or False:
         return bd
 
     if has_exactly_one_blank_square(bd):
-        potential_solutions = [
+        possible_boards_with_square_0_filled = [
             replace_square(bd, find_single_blank_square(bd), val)
             for val in range(1, 10)
         ]
-        solutions = filter(is_valid, potential_solutions)
+        solutions = filter(is_valid, possible_boards_with_square_0_filled)
         return next(solutions)
     elif first_2_squares_are_blank(bd):
         possible_boards_with_square_0_filled = [
@@ -92,11 +92,10 @@ def solve(bd: "Board") -> "Board" or False:
             for value in range(1, 10)
             for partial_solution in possible_boards_with_square_0_filled
         ]
-        potential_solutions = possible_boards_with_square_0_and_1_filled
-
-        for potential_solution in potential_solutions:
-            if is_valid(potential_solution):
-                return potential_solution
+        potential_solutions = filter(
+            is_valid, possible_boards_with_square_0_and_1_filled
+        )
+        return next(potential_solutions)
     return False
 
 
