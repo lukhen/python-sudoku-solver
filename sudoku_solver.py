@@ -84,16 +84,13 @@ def solve(bd: "Board") -> "Board" or False:
         solutions = filter(is_valid, possible_boards_with_first_blank_square_filled)
         return next(solutions)
     elif squares_0_and_1_blank(bd) or squares_0_and_2_blank(bd):
-        first_blank_square = find_first_blank_square(bd)
         possible_boards_with_first_blank_square_filled = [
-            replace_square(bd, first_blank_square, value) for value in range(1, 10)
+            replace_square(bd, find_first_blank_square(bd), value)
+            for value in range(1, 10)
         ]
-        first_blank_square_in_board_partially_filled = find_first_blank_square(
-            possible_boards_with_first_blank_square_filled[0]
-        )
         possible_boards_with_both_blank_squares_filled = [
             replace_square(
-                partial_solution, first_blank_square_in_board_partially_filled, value
+                partial_solution, find_first_blank_square(partial_solution), value
             )
             for value in range(1, 10)
             for partial_solution in possible_boards_with_first_blank_square_filled
