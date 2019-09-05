@@ -84,7 +84,16 @@ def solve(bd: "Board") -> "Board" or False:
         solutions = filter(is_valid, potential_solutions)
         return next(solutions)
     elif first_2_squares_are_blank(bd):
-        potential_solutions = [[3, 9, *bd[2:]], [1, 2, *bd[2:]], [2, 1, *bd[2:]]]
+        possible_boards_with_square_0_filled = [
+            replace_square(bd, 0, value) for value in range(1, 10)
+        ]
+        possible_boards_with_square_0_and_1_filled = [
+            replace_square(partial_solution, 1, value)
+            for value in range(1, 10)
+            for partial_solution in possible_boards_with_square_0_filled
+        ]
+        potential_solutions = possible_boards_with_square_0_and_1_filled
+
         for potential_solution in potential_solutions:
             if is_valid(potential_solution):
                 return potential_solution
