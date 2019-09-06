@@ -87,7 +87,7 @@ def solve(bd: "Board") -> "Board" or False:
         ]
         if valid_boards_with_first_blank_square_filled:
             return valid_boards_with_first_blank_square_filled[0]
-    elif squares_0_and_1_blank(bd) or squares_0_and_2_blank(bd):
+    elif has_exactly_2_blanks_at_3_first_squares(bd):
         valid_boards_with_first_blank_square_filled = [
             valid_board
             for valid_board in [
@@ -112,6 +112,9 @@ def solve(bd: "Board") -> "Board" or False:
             return valid_boards_with_both_blank_squares_filled[0]
 
     return False
+
+def has_exactly_2_blanks_at_3_first_squares(bd):
+    return squares_0_and_1_blank(bd) or squares_0_and_2_blank(bd)
 
 
 def find_first_blank_square(bd):
