@@ -77,7 +77,7 @@ def solve(bd: "Board") -> "Board" or False:
         return bd
 
     if has_exactly_one_blank_square(bd):
-        possible_boards_with_first_blank_square_filled = [
+        valid_boards_with_first_blank_square_filled = [
             valid_board
             for valid_board in [
                 replace_square(bd, find_single_blank_square(bd), val)
@@ -85,10 +85,10 @@ def solve(bd: "Board") -> "Board" or False:
             ]
             if is_valid(valid_board)
         ]
-        if possible_boards_with_first_blank_square_filled:
-            return possible_boards_with_first_blank_square_filled[0]
+        if valid_boards_with_first_blank_square_filled:
+            return valid_boards_with_first_blank_square_filled[0]
     elif squares_0_and_1_blank(bd) or squares_0_and_2_blank(bd):
-        possible_boards_with_first_blank_square_filled = [
+        valid_boards_with_first_blank_square_filled = [
             valid_board
             for valid_board in [
                 replace_square(bd, find_first_blank_square(bd), value)
@@ -96,20 +96,20 @@ def solve(bd: "Board") -> "Board" or False:
             ]
             if is_valid(valid_board)
         ]
-        possible_boards_with_both_blank_squares_filled = [
+        valid_boards_with_both_blank_squares_filled = [
             valid_board
             for valid_board in [
                 replace_square(
                     partial_solution, find_first_blank_square(partial_solution), value
                 )
                 for value in range(1, 10)
-                for partial_solution in possible_boards_with_first_blank_square_filled
+                for partial_solution in valid_boards_with_first_blank_square_filled
             ]
             if is_valid(valid_board)
         ]
 
-        if possible_boards_with_both_blank_squares_filled:
-            return possible_boards_with_both_blank_squares_filled[0]
+        if valid_boards_with_both_blank_squares_filled:
+            return valid_boards_with_both_blank_squares_filled[0]
 
     return False
 
