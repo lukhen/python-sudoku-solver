@@ -77,14 +77,8 @@ def solve(bd: "Board") -> "Board" or False:
         return bd
 
     if has_exactly_one_blank_square(bd):
-        valid_boards_with_first_blank_square_filled = [
-            valid_board
-            for valid_board in [
-                replace_square(bd, find_first_blank_square(bd), val)
-                for val in range(1, 10)
-            ]
-            if is_valid(valid_board)
-        ]
+        valid_boards_with_first_blank_square_filled = next_boards(bd)
+
         if valid_boards_with_first_blank_square_filled:
             return valid_boards_with_first_blank_square_filled[0]
     elif has_exactly_2_blank_squares(bd):
@@ -112,6 +106,16 @@ def solve(bd: "Board") -> "Board" or False:
             return valid_boards_with_both_blank_squares_filled[0]
 
     return False
+
+
+def next_boards(bd):
+    return [
+        valid_board
+        for valid_board in [
+            replace_square(bd, find_first_blank_square(bd), val) for val in range(1, 10)
+        ]
+        if is_valid(valid_board)
+    ]
 
 
 def has_exactly_2_blank_squares(bd):
