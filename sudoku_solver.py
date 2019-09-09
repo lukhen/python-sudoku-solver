@@ -138,14 +138,11 @@ def squares_0_and_1_blank(bd):
 
 
 def has_exactly_one_blank_square(bd):
-    return find_single_blank_square(bd) is not None
-
-
-def find_single_blank_square(bd):
-
     blank_square = None
     for i in range(0, 81):
         if bd[i] is None and all([*bd[:i], *bd[i + 1 :]]):
             blank_square = i
 
-    return blank_square
+    return blank_square is not None
+
+
