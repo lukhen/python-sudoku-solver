@@ -80,7 +80,7 @@ def solve(bd: "Board") -> "Board" or False:
         valid_boards_with_first_blank_square_filled = [
             valid_board
             for valid_board in [
-                replace_square(bd, find_single_blank_square(bd), val)
+                replace_square(bd, find_first_blank_square(bd), val)
                 for val in range(1, 10)
             ]
             if is_valid(valid_board)
