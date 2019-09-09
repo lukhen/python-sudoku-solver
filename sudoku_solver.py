@@ -123,6 +123,15 @@ def has_exactly_2_blank_squares(bd):
     return blanks == 2
 
 
+def has_exactly_one_blank_square(bd):
+    blanks = 0
+    for el in bd:
+        if el is None:
+            blanks += 1
+
+    return blanks == 1
+
+
 def find_first_blank_square(bd):
     for i in range(0, 81):
         if bd[i] is None:
@@ -135,14 +144,3 @@ def squares_0_and_2_blank(bd):
 
 def squares_0_and_1_blank(bd):
     return bd[0] is None and bd[1] is None
-
-
-def has_exactly_one_blank_square(bd):
-    blank_square = None
-    for i in range(0, 81):
-        if bd[i] is None and all([*bd[:i], *bd[i + 1 :]]):
-            blank_square = i
-
-    return blank_square is not None
-
-
