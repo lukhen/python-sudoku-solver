@@ -84,13 +84,25 @@ def solve(bd: "Board") -> "Board" or False:
     elif has_exactly_2_blank_squares(bd):
         next_boards = find_next_boards(bd)
 
-        next_boards_of_next_boards = [
-            find_next_boards(board) for board in next_boards
-        ]
+        next_boards_of_next_boards = [find_next_boards(board) for board in next_boards]
 
         for boards in next_boards_of_next_boards:
             if boards:
                 return boards[0]
+    elif has_exactly_3_blank_squares(bd):
+        next_boards = find_next_boards(bd)
+
+        next_boards_of_next_boards = [find_next_boards(board) for board in next_boards]
+
+        list_of_lists_of_lists_of_boards = [
+            [find_next_boards(lob) for lob in llob]
+            for llob in next_boards_of_next_boards
+        ]
+
+        for llb in list_of_lists_of_lists_of_boards:
+            for boards in llb:
+                if boards:
+                    return boards[0]
 
     return False
 
@@ -103,6 +115,15 @@ def find_next_boards(bd):
         ]
         if is_valid(valid_board)
     ]
+
+
+def has_exactly_3_blank_squares(bd):
+    blanks = 0
+    for el in bd:
+        if el is None:
+            blanks += 1
+
+    return blanks == 3
 
 
 def has_exactly_2_blank_squares(bd):
