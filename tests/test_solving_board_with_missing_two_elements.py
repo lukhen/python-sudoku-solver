@@ -12,6 +12,7 @@ B = None
         for indices in itertools.combinations(range(0, 81), 2)
     ],
 )
+@pytest.mark.slow
 def test_missing_2_elements(name, blank_indices):
     # fmt: off
     bd_solved = [3, 9, 6, 2, 7, 8, 4, 5, 1,
