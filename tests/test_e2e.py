@@ -25,6 +25,5 @@ s1_solved = [5, 3, 4, 6, 7, 8, 9, 1, 2,
 # fmt: on
 
 
-@pytest.mark.skip(reason="Skipping e2e test")
 def test_e2e():
     assert solve(s1) == s1_solved

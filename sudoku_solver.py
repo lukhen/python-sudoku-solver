@@ -73,15 +73,24 @@ def solve(bd: "Board") -> "Board" or False:
     if not is_valid(bd):
         return False
 
-    if all(bd):
-        return bd
+    def solve_bd(b):
 
-    next_boards = find_next_boards(bd)
+        if all(b):
+            return b
+        else:
+            return solve_lobd(find_next_boards(b))
 
-    for board in next_boards:
-        return solve(board)
+    def solve_lobd(lobd):
+        if len(lobd) == 0:
+            return False
+        else:
+            tmp = solve_bd(lobd[0])
+            if tmp is not False and is_valid(tmp):
+                return tmp
+            else:
+                return solve_lobd(lobd[1:])
 
-    return False
+    return solve_bd(bd)
 
 
 def find_next_boards(bd):
