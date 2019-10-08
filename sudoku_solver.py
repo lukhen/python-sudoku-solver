@@ -1,3 +1,6 @@
+import textwrap
+import argparse
+
 # Data definitions:
 # Board: listOf Squares, length - 81
 # Square: oneOf:
@@ -107,3 +110,53 @@ def find_first_blank_square(bd):
     for i in range(0, 81):
         if bd[i] is None:
             return i
+
+
+if __name__ == "__main__":
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("sudoku")
+    args = parser.parse_args()
+    sudoku = []
+    wrong_input = False
+    for el in args.sudoku:
+        if el == "B":
+            sudoku.append(None)
+        else:
+            try:
+                sudoku.append(int(el))
+            except:
+                wrong_input = True
+
+    if wrong_input:
+        print("Wrong input")
+    else:
+        solved_sudoku = solve(sudoku)
+        if solved_sudoku:
+            output = textwrap.dedent(
+                """
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                | {} | {} | {} | {} | {} | {} | {} | {} | {} |
+                -------------------------------------
+                """
+            )
+
+            print(output.format(*solved_sudoku))
+        else:
+            print("Sudoku unsolvable")
